@@ -24,8 +24,8 @@ def prime_factors(n):
 
 def main():
     while(True):
-        s = raw_input('Find the prime factors of (d for done): ')
-        if(s == 'd'):
+        s = raw_input('Find the prime factors of (q for quit): ')
+        if(s == 'q'):
             break
         try:
             n = int(s)

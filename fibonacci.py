@@ -23,8 +23,8 @@ def fibonacci(n):
 
 def main():
     while(True):
-        s = raw_input('Enter the number of fibonacci numbers (d for done): ')
-        if(s == 'd'):
+        s = raw_input('Enter the number of fibonacci numbers (q for quit): ')
+        if(s == 'q'):
             break
         try:
             n = int(s)
