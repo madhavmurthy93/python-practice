@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import xml.etree.ElementTree as ET
+import urllib2
 
 def posts(tree):
     root = tree.getroot().find('channel')
