@@ -1,20 +1,27 @@
 #!/usr/bin/python
 
 import MySQLdb as sql
+from tabulate import tabulate
 
 def connect(l):
     try:
         db = sql.connect(l[0], l[1], l[2], l[3])
+        cursor = db.cursor()
         while(True):
             query = raw_input('Query (e for exit): ')
             if(query == 'e'):
                 break
-            db.query(query)
-            r = db.use_result()
-            for row in r.fetch_row(0):
-                print row
+            cursor.execute(query)
+            columns = cursor.description
+            rows = []
+            header = []
+            for i in columns:
+                header.append(i[0])
+            for row in cursor.fetchall():
+                rows.append(row)
+            print tabulate(rows, header)
     except sql.Error, e:
-        print 'Error: %d %s' % (e.args[0], e.args[1])
+        print('Error: %d %s' % (e.args[0], e.args[1]))
 
 def main():
     while(True):
