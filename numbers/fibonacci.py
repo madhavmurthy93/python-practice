@@ -1,11 +1,6 @@
 #!/usr/bin/python
 
 def fibonacci(n):
-    try:
-        assert n > 0
-    except AssertionError:
-        print 'Enter a number > 0'
-        return
     fnminus2 = 0
     fnminus1 = 1
     print 'F0 = ' + str(fnminus2)
@@ -28,6 +23,11 @@ def main():
             break
         try:
             n = int(s)
+            try:
+                assert n > 0
+            except AssertionError:
+                print 'Enter a number > 0'
+                return
             fibonacci(n)
         except (ValueError, SyntaxError):
             print('Please enter a valid integer.')
